@@ -6,8 +6,7 @@ from PIL import Image
 @st.cache_resource
 def load():
     model_id = "stabilityai/stable-diffusion-2"
-    scheduler = EulerDiscreteScheduler.from_pretrained(model_id, subfolder="scheduler")
-    pipe = StableDiffusionPipeline.from_pretrained(model_id, scheduler=scheduler, torch_dtype=torch.float32)
+    pipe = EulerDiscreteScheduler.from_pretrained(model_id, subfolder="scheduler")
     pipe = pipe.to("cpu")  
     return pipe
 
